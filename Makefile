@@ -4,7 +4,7 @@ project1:
 	cc project2.c -o project2 -pedantic 
 
 run: clean project2
-	./project2 tests/input.txt
+	./project2 
 	make clean
 
 test:
