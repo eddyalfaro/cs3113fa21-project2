@@ -1,17 +1,17 @@
-all: project1
+all: project2
 
 project1:
-	cc project1.c -o project1 -pedantic 
+	cc project2.c -o project2 -pedantic 
 
-run: clean project1
-	./project1 tests/input.txt
+run: clean project2
+	./project2 tests/input.txt
 	make clean
 
 test:
 	bats tests.bats
 
 clean:
-	rm -f project1
+	rm -f project2
 
 commit:
 	git add .
