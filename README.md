@@ -1,10 +1,10 @@
-#Eddy Alfaro Cordoba
+# Eddy Alfaro Cordoba
 
 ## Compiling
 compiling can be done with the command "make all"
 
 ## Executing
-Once the file has binary has been compiled the program can be executed as 
+Once the binary has been compiled the program can be executed as 
 ```
 ./project1 FILEPATH
 ```
@@ -18,7 +18,7 @@ make run
 this set of files will be used and the output will be presented in the terminal.
 
 ## Bugs
-bugs can be expected when any of the Ids of the processes presented in the input file is not within the range of (0, p]. This bug is due to the way the processes are currently being stored. its process ID correspond to the element number which it occupies within the array.
+
 
 ## Resources
 > https://docs.oracle.com/cd/E77782_01/html/E77803/stdatomic-3a.html#scrolltoc
