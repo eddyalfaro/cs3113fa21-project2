@@ -4,6 +4,10 @@
 #include <string.h>
 #include <errno.h>
 
+#include "list.h"
+#include "process.h"
+#include "script.h"
+
 #define _BS_ "BESTFIT"
 #define _FF_ "FIRSTFIT"
 #define _NF_ "NEXTFIT"

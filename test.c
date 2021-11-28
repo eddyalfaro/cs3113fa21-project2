@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "process.h"
 #include "list.h"
+#include "script.h"
+
+static char*  SCRIPTS[] = {"REQUEST", "RELEASE", "LIST AVAILABLE", "LIST ASSIGNED", "FIND"};
+
+#define TOTAL_COMMANDS (5)
 
 int main(){
 	printf("%ld\n", MEMORY);
@@ -31,5 +36,22 @@ int main(){
 	printList(&_head, print_prcss);
 	printNode(_removed, print_prcss);
 
-	delete_list(_head);
+	delete_node(_removed, NULL);
+	delete_list(_head, NULL);
+	// testing script
+	
+	ASSIGN_COMMANDS(SCRIPTS, TOTAL_COMMANDS);
+
+	node* command_queue = get_command_queue("tests/input.txt", getPrcss);
+	printList(&command_queue, print_command_prcss);
+	
+	size_t sz = getSize(command_queue);
+
+	printf("%lu\n", sz);
+	script* commands[sz];
+	get_data_list(command_queue, (void**) commands);
+
+	delete_list(command_queue, NULL);
+	for (int i = 0; i < sz; i++) delete_scrpt_object(commands[i], delete_prcss);
+	return EXIT_SUCCESS;
 }

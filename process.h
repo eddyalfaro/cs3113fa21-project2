@@ -12,12 +12,12 @@ static size_t MEMORY;
 typedef struct prcss{
 	size_t mmry;
 	size_t base;
-	char* name;
+	char* name; 	//Dynamically
 }prcss;
 
 
 void print_prcss(void* item){
-	if (item == NULL) return;
+	if (item == NULL) {printf("\n"); return;}
 	prcss temp = *((prcss*) item);
 	printf("(%s, %ld, %ld)\n", temp.name, temp.mmry, temp.base);
 }
@@ -41,6 +41,28 @@ int comp_prcssID(void* prcss1, void* _ID){
 	prcss* temp = (prcss*) prcss1;
 	char* id = (char*) _ID;
 	return strcmp(temp->name, id);
+}
+
+void* getPrcss(char* info){
+	if (info == NULL) return NULL;
+	prcss* temp = malloc(sizeof(prcss));
+	
+	char* token = strtok(info, " \t\n");
+	size_t size = strlen(token);
+	temp->name = malloc((size + 1)*sizeof(char));
+	memcpy(temp->name, token, size + 1);
+	
+	token = strtok(NULL, " \t\n");
+	if (token == NULL) return temp;
+
+	temp->mmry = strtol(token, NULL, 10);
+	return temp;	
+}
+
+void delete_prcss(prcss* item){
+	if (item == NULL) return;
+	if (item->name != NULL) free(item->name);
+	free(item);
 }
 
 #endif
