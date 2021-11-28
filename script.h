@@ -6,7 +6,7 @@
 #include <string.h>
 
 #include "process.h"
-#include "list.h"
+#include "node.h"
 
 #define ASSIGN_COMMANDS(array, sz) (SCRPT_CMDS = array, NUM_OF_CMDS = sz)
 
