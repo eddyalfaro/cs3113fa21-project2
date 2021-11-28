@@ -4,7 +4,7 @@
 #include <string.h>
 #include <errno.h>
 
-#include "list.h"
+#include "node.h"
 #include "process.h"
 #include "script.h"
 
