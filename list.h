@@ -148,7 +148,7 @@ node* remove_node(node** head, int (*comp) (void*, void*), void* data){
 
 	temp->next = found->next;
 	//found->next = NULL;		//dependency keep for use of NEXTFIT
-					//within main check is removed was the last add
+					//within main, check if removed == last add
 					//if true keep dependency until next add
 					//if false remove dependency and delete element
 	return found;	
