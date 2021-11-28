@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "process.h"
-#include "list.h"
+#include "node.h"
 #include "script.h"
 
 static char*  SCRIPTS[] = {"REQUEST", "RELEASE", "LIST AVAILABLE", "LIST ASSIGNED", "FIND"};
