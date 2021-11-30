@@ -21,6 +21,7 @@
 const char* mem_allo_algo;
 const size_t* mem_sz;
 const char* scriptFile;
+const node* (*ALLO_ALGO) (node*, prcss*);
 
 char buffer[buff_sz];
 
@@ -53,6 +54,22 @@ void printImpl(){
 	fprintf(stdout, "\t<N>\n\t\tAny integer between 2^4 and 2^30\n\n");
 	fprintf(stdout, "\t<ScriptFile>\n\t\tScript file name with the allocation commands\n\n");
 	exit(EXIT_FAILURE);
+}
+
+void select_algo(char* command){
+	switch (command){
+	case _BF_:
+		ALLO_ALGO = NULL;
+		break;
+	case _FF_:
+		break;
+	case _WF_:
+		break;
+	case _NF_:
+		break;
+	default:
+		break;		
+	}
 }
 
 int main(int argc, char** argv){

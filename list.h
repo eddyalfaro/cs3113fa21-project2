@@ -80,12 +80,16 @@ node* enqueue_node(node* tail, node* toAdd){
 /*	removes the first element in the queue
 *	Arguments: queue, the queue implementation of the structure
 */
-node* pop(node** queue){
+node* pop(node** stack){
 	if (*queue == NULL) return NULL;
 	node* temp = *queue;
 	*queue = temp->next;
 	temp->next = NULL;
 	return temp;
+}
+
+node* dequeue(node** queue){
+	return pop(queue);
 }
 
 /*	creates a new node with the shallow copy of the data presented in the first element
