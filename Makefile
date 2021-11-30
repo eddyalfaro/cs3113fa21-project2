@@ -1,4 +1,4 @@
-all: project2
+all: ff
 
 project2:
 	cc project2.c -o project2 -pedantic 
