@@ -6,7 +6,7 @@
 #include <string.h>
 
 #include "process.h"
-#include "list.h"
+#include "node.h"
 
 #define ASSIGN_COMMANDS(array, sz) (SCRPT_CMDS = array, NUM_OF_CMDS = sz)
 
@@ -18,7 +18,7 @@
 static char** SCRPT_CMDS;
 static size_t NUM_OF_CMDS;
 
-static char buffer[100];
+static char _buff[100];
 
 typedef struct scriptcmd{
 	char* cmd;	//Static set of rules
@@ -42,16 +42,16 @@ void err_Exit(int errNum){
 }
 
 void cleanbuffer(){
-	for (int i = 0; i < 100; i++) buffer[i] = '\0';
+	for (int i = 0; i < 100; i++) _buff[i] = '\0';
 }
 
 char* getLine(FILE* file){
 	int i = 0;
 	cleanbuffer();
 
-	while(fscanf(file, "%c", &buffer[i]) > 0){ 
-		if (buffer[i] == '\n') break;
-		if (buffer[i] ==  CMMNT_CHAR) {
+	while(fscanf(file, "%c", &_buff[i]) > 0){ 
+		if (_buff[i] == '\n') break;
+		if (_buff[i] ==  CMMNT_CHAR) {
 			char grbg;
 			while(fscanf(file, "%c", &grbg) > 0 && grbg != '\n');
 			break;
@@ -59,7 +59,7 @@ char* getLine(FILE* file){
 		i++;
 	}
 	if (i == 0) return NULL;
-	return buffer;
+	return _buff;
 }
 
 script* get_scrpt_data(char* command){
@@ -114,7 +114,7 @@ node* get_command_queue(char* fileName, void* (*objTrans) (char* dataInfo)){
 	do{	
 		if (getLine(inputFile) == NULL) continue;		
 
-		temp = get_command_node(buffer, objTrans);
+		temp = get_command_node(_buff, objTrans);
 		if (cmmd_queue == NULL) cmmd_queue = temp;
 		else temp = enqueue(cmmd_queue, temp);
 
