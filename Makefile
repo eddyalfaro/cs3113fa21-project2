@@ -5,6 +5,7 @@ project2:
 
 ff: clean project2
 	./project2 FIRSTFIT 268435456 tests/input.txt > out
+	cat out
 	make clean
 
 test:
