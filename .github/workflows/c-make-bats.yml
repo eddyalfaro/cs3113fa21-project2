@@ -24,3 +24,5 @@ jobs:
       run: make all
     - name: bats test
       run: bats tests.bats
+    - name: test FirstFit
+      run: make ff
