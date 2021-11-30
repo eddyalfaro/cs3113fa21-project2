@@ -4,9 +4,8 @@
 #include <string.h>
 #include <errno.h>
 
-#include "node.h"
-#include "process.h"
 #include "script.h"
+#include "allo.h"
 
 #define _BS_ "BESTFIT"
 #define _FF_ "FIRSTFIT"
@@ -17,11 +16,14 @@
 #define _true (~_false)
 
 #define buff_sz (50)
+#define TOTAL_COMMANDS (5) 
+
+static char*  SCRIPTS[] = {"REQUEST", "RELEASE", "LIST AVAILABLE", "LIST ASSIGNED", "FIND"};
 
 const char* mem_allo_algo;
 const size_t* mem_sz;
 const char* scriptFile;
-const node* (*ALLO_ALGO) (node*, prcss*);
+node* (*ALLO_ALGO) (node**, prcss*);
 
 char buffer[buff_sz];
 
@@ -55,20 +57,9 @@ void printImpl(){
 	fprintf(stdout, "\t<ScriptFile>\n\t\tScript file name with the allocation commands\n\n");
 	exit(EXIT_FAILURE);
 }
-
 void select_algo(char* command){
-	switch (command){
-	case _BF_:
-		ALLO_ALGO = NULL;
-		break;
-	case _FF_:
-		break;
-	case _WF_:
-		break;
-	case _NF_:
-		break;
-	default:
-		break;		
+	if (strcmp(command, _FF_) == 0) {
+		ALLO_ALGO = firstFit;
 	}
 }
 
@@ -95,7 +86,42 @@ int main(int argc, char** argv){
 		mem_sz = (const size_t*) &_temp;
 	}else printImpl();	
 
+	SET_MAX_MEMORY(*mem_sz);
+	ASSIGN_COMMANDS(SCRIPTS, TOTAL_COMMANDS); 
+
+	select_algo((char*) mem_allo_algo);	
+	node* cmd_queue = get_command_queue((char*) scriptFile, getPrcss);
 	
+	node* command_node = NULL;
+	node* mem_sim = NULL;
+	node* last_alloc = NULL;
+	node* checker = NULL;	
+
+	script* command = NULL;
+
+	do{
+		command_node = dequeue(&cmd_queue);
+
+		if (command_node != NULL) command = (script*) command_node->data;
+		if (strcmp(command->cmd, SCRIPTS[0]) == 0){
+			print_command_prcss(command);
+			checker = ALLO_ALGO(&mem_sim, command->object);
+			if (checker == NULL) {
+				printf("FAIL REQUEST: "); 
+				print_prcss(command->object);
+			}else {
+				last_alloc = checker;
+				printf("ALLOCATED: ");
+				print_prcss(command->object);
+			}
+		}
+		
+
+
+		delete_node(command_node, NULL);
+		delete_script(command);
+
+	}while (cmd_queue != NULL);		
 
 	if (argc == 1){
 		free((char*) mem_allo_algo);

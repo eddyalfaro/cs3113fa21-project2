@@ -4,8 +4,8 @@ project2:
 	cc project2.c -o project2 -pedantic 
 
 ff: clean project2
-	./project2 FIRSTFIT 26000000 tests/input.txt
-	nake clean
+	./project2 FIRSTFIT 268435456 tests/input.txt
+	make clean
 
 test:
 	cc test.c -o test -pedantic

@@ -60,6 +60,15 @@ node* insert_after(node* crrnt, void* data, void (*dt_updt) (void*, void*)){
 	return temp;
 }
 
+node* insert_before(node* crrnt, void* data, void (*dt_updt) (void*, void*)){
+	node*temp = create_node(data);
+	if (dt_updt != NULL) dt_updt(crrnt->data, temp->data);
+	if (temp != NULL){
+		temp->next = crrnt;
+	}
+	return temp;
+}
+
 /*	used with queues implementations of the structure. Queues the given data at the end
 *	Arguments: tail, the last element present in the list
 *		data, the data that is going to be queue up
@@ -81,9 +90,9 @@ node* enqueue_node(node* tail, node* toAdd){
 *	Arguments: queue, the queue implementation of the structure
 */
 node* pop(node** stack){
-	if (*queue == NULL) return NULL;
-	node* temp = *queue;
-	*queue = temp->next;
+	if (*stack == NULL) return NULL;
+	node* temp = *stack;
+	*stack = temp->next;
 	temp->next = NULL;
 	return temp;
 }

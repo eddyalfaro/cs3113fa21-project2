@@ -1,22 +1,7 @@
-cc test.c -o test -pedantic
-./test
-0
-(OS, 25, 0)
-(P1, 50, 0)
-75, 75
-75, -1
-(OS, 25, 0)
-(P1, 50, 25)
-(P1, 50, 25)
-(P1, 50, 25)
-(OS, 25, 0)
-(P1, 50, 25)
-(P2, 3236, 75)
-(OS, 25, 0)
-(P1, 50, 25)
-(P2, 3236, 75)
-REQUEST :
-	(OS, 8388608, 0)
+rm -f project2
+cc project2.c -o project2 -pedantic 
+./project2 FIRSTFIT 26000000 tests/input.txt
+FIRSTFIT
 LIST AVAILABLE :
 	
 REQUEST :
@@ -33,5 +18,72 @@ RELEASE :
 	(P1, 0, 0)
 REQUEST :
 	(P2, 14680064, 0)
-9
-rm -f test
+*****
+REQUEST :
+	(P1, 20971520, 0)
+REQUEST :
+	(P2, 14680064, 0)
+REQUEST :
+	(P3, 18874368, 0)
+RELEASE :
+	(P2, 0, 0)
+REQUEST :
+	(P4, 8388608, 0)
+RELEASE :
+	(P1, 0, 0)
+REQUEST :
+	(P2, 14680064, 0)
+*****
+REQUEST :
+	(P2, 14680064, 0)
+REQUEST :
+	(P3, 18874368, 0)
+RELEASE :
+	(P2, 0, 0)
+REQUEST :
+	(P4, 8388608, 0)
+RELEASE :
+	(P1, 0, 0)
+REQUEST :
+	(P2, 14680064, 0)
+*****
+REQUEST :
+	(P3, 18874368, 0)
+RELEASE :
+	(P2, 0, 0)
+REQUEST :
+	(P4, 8388608, 0)
+RELEASE :
+	(P1, 0, 0)
+REQUEST :
+	(P2, 14680064, 0)
+*****
+RELEASE :
+	(P2, 0, 0)
+REQUEST :
+	(P4, 8388608, 0)
+RELEASE :
+	(P1, 0, 0)
+REQUEST :
+	(P2, 14680064, 0)
+*****
+REQUEST :
+	(P4, 8388608, 0)
+RELEASE :
+	(P1, 0, 0)
+REQUEST :
+	(P2, 14680064, 0)
+*****
+RELEASE :
+	(P1, 0, 0)
+REQUEST :
+	(P2, 14680064, 0)
+*****
+REQUEST :
+	(P2, 14680064, 0)
+*****
+*****
+make clean
+make[1]: Entering directory '/home/eddyhernando94/cs3113fa21-project2'
+rm -f project2
+make[1]: Leaving directory '/home/eddyhernando94/cs3113fa21-project2'
