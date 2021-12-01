@@ -94,7 +94,6 @@ int main(int argc, char** argv){
 	
 	node* command_node = NULL;
 	node* mem_sim = NULL;
-	node* last_alloc = NULL;
 	node* checker = NULL;	
 
 	script* command = NULL;
@@ -103,21 +102,43 @@ int main(int argc, char** argv){
 		command_node = dequeue(&cmd_queue);
 
 		if (command_node != NULL) command = (script*) command_node->data;
+		else break;		
+		
+		print_command_prcss(command);
+		
 		if (strcmp(command->cmd, SCRIPTS[0]) == 0){
-			print_command_prcss(command);
 			checker = ALLO_ALGO(&mem_sim, command->object);
+			updt_lastAdded(mem_sim, checker);
+
 			if (checker == NULL) {
 				printf("FAIL REQUEST: "); 
 				print_prcss(command->object);
+				delete_prcss((prcss*) command->object);
 			}else {
-				last_alloc = checker;
 				printf("ALLOCATED: ");
 				print_prcss(command->object);
 			}
+		}else if (strcmp(command->cmd, SCRIPTS[1]) == 0){
+			checker = release(mem_sim, command->object);
+
+			if (checker == NULL){
+				printf("FAIL RELEASE: ");
+				print_prcss(command->object);
+				delete_prcss((prcss*) command->object);
+			}else {
+				printf("FREE: ");
+				print_prcss(checker->data);
+				
+				//ir removed the same as the last added it is kept
+				//otherwise it is deleted from memory
+				if (comp_prcss(checker->data, last_add->data) != 0)
+					delete_node(checker, delete_prcss);
+			}	
+		}else if(strcmp(command->cmd, SCRIPTS[2]) == 0){
+			listAvailable(mem_sim);
 		}
 		
-
-
+		printf("**************\n");
 		delete_node(command_node, NULL);
 		delete_script(command);
 

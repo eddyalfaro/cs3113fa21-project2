@@ -59,7 +59,8 @@ void* getPrcss(char* info){
 	return temp;	
 }
 
-void delete_prcss(prcss* item){
+void delete_prcss(void* target){
+	prcss* item = (prcss*) target;
 	if (item == NULL) return;
 	if (item->name != NULL) free(item->name);
 	free(item);
