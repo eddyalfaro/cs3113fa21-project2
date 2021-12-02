@@ -147,6 +147,7 @@ int main(int argc, char** argv){
 		}else if(strcmp(command->cmd, SCRIPTS[3]) == 0){
 			printList(&mem_sim, print_prcss);
 		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
+			
 		}else {
 			printf("COMMMAND NOT FOUND TRY AGAIN\n");
 		}

@@ -23,8 +23,8 @@ size_t getFreeSpace(node* node, size_t* elmnt){
 void updt_lastAdded(node* list, node* last){
 	if (last == NULL) return; 					//nothing added
 	
-	if (find_by_data(list, comp_prcss, last->data) == NULL)
-		delete_node(last_add, delete_prcss);			//last added recorded
+	//if (find_by_data(list, comp_prcss, last->data) == NULL)
+	//	delete_node(last_add, delete_prcss);			//last added recorded
 							//is not within the list of allocated
 	last_add = last;
 }
@@ -63,7 +63,7 @@ node* release(node* _list, prcss* target){
 	node* rmvd = remove_node(&_list, comp_prcss, target);
 	if (rmvd == NULL) return NULL;
 
-	delete_prcss(target);
+	//delete_prcss(target);
 
 	if (comp_prcss(rmvd->data, last_add->data) != 0){
 		rmvd->next = NULL;
