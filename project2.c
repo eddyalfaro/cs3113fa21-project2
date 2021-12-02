@@ -125,7 +125,7 @@ int main(int argc, char** argv){
 				//print_prcss(command->object);
 			}
 		}else if (strcmp(command->cmd, SCRIPTS[1]) == 0){
-			checker = release(*mem_sim, command->object);
+			checker = release(&mem_sim, command->object);
 
 			if (checker == NULL){
 				_prcss = (prcss*) command->object;
