@@ -148,11 +148,20 @@ int main(int argc, char** argv){
 		}else if(strcmp(command->cmd, SCRIPTS[3]) == 0){
 			if (mem_sim == NULL) printf("NONE\n");
 			else printList(&mem_sim, print_prcss);
-		}/*else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
-			
-		}*/else {
-			//print_command_prcss(command);
-			printf("%lu %lu\n", MEMORY, MEMORY - alloc_mmry);
+		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
+			_prcss = (prcss*) command->object;
+
+			checker = find_by_data(mem_sim, comp_prcss, _prcss);
+			if (checker == NULL) printf("FAULT\n");
+			else {
+				print_prcss(checker->data);
+				printf("\n");
+			}
+
+			delete_prcss(_prcss);
+		}else {
+			print_command_prcss(command);
+			//printf("%lu %lu\n", MEMORY, MEMORY - alloc_mmry);
 		}
 		//printf("**************\n");
 		//delete_node(command_node, NULL);
