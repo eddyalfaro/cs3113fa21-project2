@@ -157,9 +157,8 @@ int main(int argc, char** argv){
 				checker = find_by_data(mem_sim, comp_prcss, _prcss);
 				if (checker == NULL) printf("FAULT\n");
 				else {
-				printf("***TO-DO***\n");
-//					print_prcss(checker->data);
-//					printf("\n");
+					print_prcss(checker->data);
+					printf("\n");
 				}
 
 			}
