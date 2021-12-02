@@ -34,6 +34,11 @@ void listAvailable(node* list){
 		printf("FULL\n");
 		return;
 	}
+
+	if (list == NULL && MEMORY > 0){
+		printf("(%lu %d)\n", MEMORY, 0);
+		return;
+	}
 	
 	size_t elmnt = 0;
 	size_t free_pg_sz = getFreeSpace(list, &elmnt);
