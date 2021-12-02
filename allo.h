@@ -54,12 +54,12 @@ void listAvailable(node* list){
 		if (free_pg_sz > 0){ 
 			if (iterator->next != NULL)
 				printf("(%lu, %lu) ", free_pg_sz, data->mmry + data->base);
-			else printf("(%lu, %lu)\n", free_pg_sz, data->mmry + data->base);
+			else printf("(%lu, %lu)", free_pg_sz, data->mmry + data->base);
 		}
 		iterator = iterator->next;
 	}
 
-	//printf("\n");
+	printf("\n");
 }
 
 node* release(node** _list, prcss* target){
