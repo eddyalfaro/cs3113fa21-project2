@@ -142,9 +142,10 @@ int main(int argc, char** argv){
 				if (comp_prcss(checker->data, last_add->data) != 0)
 					delete_node(checker, delete_prcss);
 			}	
-		}/*else if(strcmp(command->cmd, SCRIPTS[2]) == 0){
-			listAvailable(mem_sim);
-		}else if(strcmp(command->cmd, SCRIPTS[3]) == 0){
+		}else if(strcmp(command->cmd, SCRIPTS[2]) == 0){
+			if (MEMORY - alloc_mmry == 0) printf("FULL\n");
+			else listAvailable(mem_sim);
+		}/*else if(strcmp(command->cmd, SCRIPTS[3]) == 0){
 			printList(&mem_sim, print_prcss);
 		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
 			

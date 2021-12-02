@@ -30,7 +30,7 @@ void updt_lastAdded(node* list, node* last){
 }
 
 void listAvailable(node* list){
-	if (MEMORY == alloc_mmry){
+	if ((MEMORY - alloc_mmry) == 0){
 		printf("FULL\n");
 		return;
 	}
