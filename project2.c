@@ -123,14 +123,14 @@ int main(int argc, char** argv){
 				printf("%s %lu\n", _prcss->name, _prcss->base);
 				//print_prcss(command->object);
 			}
-		}/*else if (strcmp(command->cmd, SCRIPTS[1]) == 0){
+		}else if (strcmp(command->cmd, SCRIPTS[1]) == 0){
 			checker = release(mem_sim, command->object);
 
 			if (checker == NULL){
 				_prcss = (prcss*) command->object;
 				printf("FAIL RELEASE %s\n", _prcss->name);
 				//print_prcss(command->object);
-				//delete_prcss((prcss*) command->object);
+				delete_prcss((prcss*) command->object);
 			}else {
 				printf("FREE ");
 				_prcss = (prcss*) checker->data;
@@ -139,10 +139,10 @@ int main(int argc, char** argv){
 				
 				//if removed the same as the last added it is kept
 				//otherwise it is deleted from memory
-				//if (comp_prcss(checker->data, last_add->data) != 0)
-				//	delete_node(checker, delete_prcss);
+				if (comp_prcss(checker->data, last_add->data) != 0)
+					delete_node(checker, delete_prcss);
 			}	
-		}else if(strcmp(command->cmd, SCRIPTS[2]) == 0){
+		}/*else if(strcmp(command->cmd, SCRIPTS[2]) == 0){
 			listAvailable(mem_sim);
 		}else if(strcmp(command->cmd, SCRIPTS[3]) == 0){
 			printList(&mem_sim, print_prcss);

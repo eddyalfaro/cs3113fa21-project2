@@ -58,18 +58,21 @@ void listAvailable(node* list){
 }
 
 node* release(node* _list, prcss* target){
+	if (target == NULL) return NULL;
 	if (_list == NULL) return NULL;
-	
+
 	node* rmvd = remove_node(&_list, comp_prcss, target);
 	if (rmvd == NULL) return NULL;
 
-	//delete_prcss(target);
+	delete_prcss(target);
 
+	//if removed is different than the last added it is completely
+	//unlinked from the list
 	if (comp_prcss(rmvd->data, last_add->data) != 0){
 		rmvd->next = NULL;
 	}
 
-	prcss* rmvd_prcss =  (prcss*) rmvd->data;	
+	//prcss* rmvd_prcss =  (prcss*) rmvd->data;	
 	alloc_mmry -= rmvd_prcss->mmry;
 
 	return rmvd;
