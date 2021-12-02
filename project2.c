@@ -150,14 +150,14 @@ int main(int argc, char** argv){
 			else printList(&mem_sim, print_prcss);
 		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
 			_prcss = (prcss*) command->object;
-
+/*
 			checker = find_by_data(mem_sim, comp_prcss, _prcss);
 			if (checker == NULL) printf("FAULT\n");
 			else {
 				print_prcss(checker->data);
 				printf("\n");
 			}
-
+*/
 			delete_prcss(_prcss);
 		}else {
 			print_command_prcss(command);
