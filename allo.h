@@ -36,7 +36,7 @@ void listAvailable(node* list){
 	}
 
 	if (list == NULL && MEMORY > 0){
-		printf("(%lu %d)\n", MEMORY, 0);
+		printf("(%lu, %d)\n", MEMORY, 0);
 		return;
 	}
 	
