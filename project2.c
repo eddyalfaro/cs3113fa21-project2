@@ -149,7 +149,8 @@ int main(int argc, char** argv){
 		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
 			
 		}*/else {
-			print_command_prcss(command);
+			//print_command_prcss(command);
+			printf("%lu\n", MEMORY);
 		}
 		//printf("**************\n");
 		//delete_node(command_node, NULL);
