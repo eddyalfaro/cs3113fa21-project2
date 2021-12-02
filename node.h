@@ -133,6 +133,7 @@ node* enqueue(node* queue, node* toAdd){
 *		data, the given identifier that determines if the element has been found
 */
 node* find_by_data(node* _head, int (*comp) (void*, void*), void* data){
+	if (_head == NULL) return NULL;
 	node* temp = _head;
 	
 	if (comp == NULL) return NULL;
