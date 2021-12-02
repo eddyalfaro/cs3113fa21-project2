@@ -150,7 +150,6 @@ int main(int argc, char** argv){
 			
 		}*/else {
 			print_command_prcss(command);
-			printf("COMMMAND NOT FOUND TRY AGAIN\n");
 		}
 		//printf("**************\n");
 		//delete_node(command_node, NULL);
