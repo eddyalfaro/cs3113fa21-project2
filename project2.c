@@ -150,7 +150,7 @@ int main(int argc, char** argv){
 			
 		}*/else {
 			//print_command_prcss(command);
-			printf("%lu\n", MEMORY);
+			printf("%lu %lu\n", MEMORY, MEMORY - alloc_mmry);
 		}
 		//printf("**************\n");
 		//delete_node(command_node, NULL);
