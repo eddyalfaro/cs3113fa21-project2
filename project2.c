@@ -117,13 +117,13 @@ int main(int argc, char** argv){
 				printf("FAIL REQUEST ");
 				printf("%s %lu\n", _prcss->name, _prcss->mmry); 
 				//print_prcss(command->object);
-				//delete_prcss((prcss*) command->object);
+				delete_prcss((prcss*) command->object);
 			}else {
 				printf("ALLOCATED ");
 				printf("%s %lu\n", _prcss->name, _prcss->base);
 				//print_prcss(command->object);
 			}
-		}else if (strcmp(command->cmd, SCRIPTS[1]) == 0){
+		}/*else if (strcmp(command->cmd, SCRIPTS[1]) == 0){
 			checker = release(mem_sim, command->object);
 
 			if (checker == NULL){
@@ -148,7 +148,7 @@ int main(int argc, char** argv){
 			printList(&mem_sim, print_prcss);
 		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
 			
-		}else {
+		}*/else {
 			printf("COMMMAND NOT FOUND TRY AGAIN\n");
 		}
 		//printf("**************\n");

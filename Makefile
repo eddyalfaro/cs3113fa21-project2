@@ -15,7 +15,8 @@ test:
 clean:
 	rm -f project2
 
-
+debug:
+	cc project2.c -o project2 -g -O3
 
 commit:
 	git add .
