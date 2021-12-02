@@ -78,7 +78,6 @@ node* release(node* _list, prcss* target){
 node* firstFit(node** list, prcss* _prcss){
 	if (MEMORY < _prcss->mmry) return NULL;
 	if (_prcss->mmry > (MEMORY - alloc_mmry)) {
-		printf("***NOT ENOUGH MEMORY: %ld %ld***\t", _prcss->mmry, MEMORY - alloc_mmry);
 		return NULL;				//not enough memory
 	}
 	
@@ -91,7 +90,7 @@ node* firstFit(node** list, prcss* _prcss){
 	size_t elmnt = 0;
 	size_t free_pg_sz = getFreeSpace(*list, &elmnt);
 
-	if (free_pg_sz > _prcss->mmry) {
+	if (free_pg_sz >= _prcss->mmry) {
 		*list = insert_before(*list, _prcss, NULL);
 		alloc_mmry += _prcss->mmry;
 		return *list;				//allocation before the first 
