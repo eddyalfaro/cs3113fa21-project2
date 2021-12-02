@@ -110,7 +110,6 @@ int main(int argc, char** argv){
 		
 		if (strcmp(command->cmd, SCRIPTS[0]) == 0){
 			checker = ALLO_ALGO(&mem_sim, command->object);
-			updt_lastAdded(mem_sim, checker);
 			_prcss = (prcss*) command->object;
 
 			if (checker == NULL) {
@@ -119,6 +118,7 @@ int main(int argc, char** argv){
 				//print_prcss(command->object);
 				delete_prcss((prcss*) command->object);
 			}else {
+				updt_lastAdded(mem_sim, checker);
 				printf("ALLOCATED ");
 				printf("%s %lu\n", _prcss->name, _prcss->base);
 				//print_prcss(command->object);
