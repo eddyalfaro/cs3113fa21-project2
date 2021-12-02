@@ -168,8 +168,8 @@ int main(int argc, char** argv){
 			//printf("%lu %lu\n", MEMORY, MEMORY - alloc_mmry);
 		}
 		//printf("**************\n");
-		//delete_node(command_node, NULL);
-		//delete_script(command);
+		delete_node(command_node, NULL);
+		delete_script(command);
 
 	}while (cmd_queue != NULL);		
 
