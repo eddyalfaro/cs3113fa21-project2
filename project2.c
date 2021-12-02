@@ -149,6 +149,7 @@ int main(int argc, char** argv){
 		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
 			
 		}*/else {
+			print_command_prcss(command);
 			printf("COMMMAND NOT FOUND TRY AGAIN\n");
 		}
 		//printf("**************\n");

@@ -96,8 +96,9 @@ node* get_command_node(char* command, void* (*objTrans) (char* dataInfo)){
 
 void print_command_prcss(void* command){
 	if (command == NULL) return;
-	printf("%s :\n\t", ((script*) command)->cmd);
+	printf("%s : \t", ((script*) command)->cmd);
 	print_prcss(((script*) command)->object);
+	printf("\n");
 }
 
 node* get_command_queue(char* fileName, void* (*objTrans) (char* dataInfo)){
