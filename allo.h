@@ -78,6 +78,7 @@ node* release(node* _list, prcss* target){
 node* firstFit(node** list, prcss* _prcss){
 	if (MEMORY < _prcss->mmry) return NULL;
 	if (_prcss->mmry > (MEMORY - alloc_mmry)) {
+		printf("***NOT ENOUGH MEMORY: %ld %ld***\t", _prcss->mmry, MEMORY - alloc_mmry);
 		return NULL;				//not enough memory
 	}
 	
