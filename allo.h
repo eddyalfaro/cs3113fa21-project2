@@ -100,7 +100,7 @@ node* firstFit(node** list, prcss* _prcss){
 
 	while (tgt_node != NULL){
 		free_pg_sz = getFreeSpace(tgt_node, &elmnt);
-		if (free_pg_sz > _prcss->mmry){
+		if (free_pg_sz >= _prcss->mmry){
 			alloc_mmry += _prcss->mmry; 
 			return insert_after(tgt_node, _prcss, prcss_set_base);
 		}
