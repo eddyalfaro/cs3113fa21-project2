@@ -139,8 +139,8 @@ int main(int argc, char** argv){
 				
 				//if removed the same as the last added it is kept
 				//otherwise it is deleted from memory
-				if (comp_prcss(checker->data, last_add->data) != 0)
-					delete_node(checker, delete_prcss);
+				//if (comp_prcss(checker->data, last_add->data) != 0)
+				//	delete_node(checker, delete_prcss);
 			}	
 		}else if(strcmp(command->cmd, SCRIPTS[2]) == 0){
 			listAvailable(mem_sim);
