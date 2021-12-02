@@ -117,7 +117,7 @@ int main(int argc, char** argv){
 				printf("FAIL REQUEST ");
 				printf("%s %lu\n", _prcss->name, _prcss->mmry); 
 				//print_prcss(command->object);
-				delete_prcss((prcss*) command->object);
+				//delete_prcss((prcss*) command->object);
 			}else {
 				printf("ALLOCATED ");
 				printf("%s %lu\n", _prcss->name, _prcss->base);
@@ -130,7 +130,7 @@ int main(int argc, char** argv){
 				_prcss = (prcss*) command->object;
 				printf("FAIL RELEASE %s\n", _prcss->name);
 				//print_prcss(command->object);
-				delete_prcss((prcss*) command->object);
+				//delete_prcss((prcss*) command->object);
 			}else {
 				printf("FREE ");
 				_prcss = (prcss*) checker->data;
@@ -151,16 +151,17 @@ int main(int argc, char** argv){
 			printf("COMMMAND NOT FOUND TRY AGAIN\n");
 		}
 		//printf("**************\n");
-		delete_node(command_node, NULL);
-		delete_script(command);
+		//delete_node(command_node, NULL);
+		//delete_script(command);
 
 	}while (cmd_queue != NULL);		
 
+	/*
 	if (argc == 1){
 		free((char*) mem_allo_algo);
 		free((size_t*) mem_sz);
 		free((char*) scriptFile);
 	}
-
+	*/
 	return 0;
 }
