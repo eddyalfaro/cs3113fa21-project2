@@ -72,7 +72,7 @@ node* release(node* _list, prcss* target){
 		rmvd->next = NULL;
 	}
 
-	//prcss* rmvd_prcss =  (prcss*) rmvd->data;	
+	prcss* rmvd_prcss =  (prcss*) rmvd->data;	
 	alloc_mmry -= rmvd_prcss->mmry;
 
 	return rmvd;
