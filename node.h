@@ -63,7 +63,11 @@ node* insert_after(node* crrnt, void* data, void (*dt_updt) (void*, void*)){
 
 node* insert_before(node* crrnt, void* data, void (*dt_updt) (void*, void*)){
 	node*temp = create_node(data);
-	if (dt_updt != NULL) dt_updt(crrnt->data, temp->data);
+	
+	//removed for implementation of the current project
+	//only time that insert+before is used is when in the head
+	//if (dt_updt != NULL) dt_updt(crrnt->data, temp->data);
+	
 	if (temp != NULL){
 		temp->next = crrnt;
 	}

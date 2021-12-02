@@ -7,6 +7,10 @@ ff: clean project2
 	./project2 FIRSTFIT 268435456  tests/input.txt
 	make clean
 
+bf: clean project2
+	./project2 BESTFIT 268435456  tests/input.txt
+	make clean
+
 test:
 	cc test.c -o test -pedantic
 	./test

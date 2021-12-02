@@ -7,7 +7,7 @@
 #include "script.h"
 #include "allo.h"
 
-#define _BS_ "BESTFIT"
+#define _BF_ "BESTFIT"
 #define _FF_ "FIRSTFIT"
 #define _NF_ "NEXTFIT"
 #define _WF_ "WORSTFIT"
@@ -62,6 +62,8 @@ void printImpl(){
 void select_algo(char* command){
 	if (strcmp(command, _FF_) == 0) {
 		ALLO_ALGO = firstFit;
+	}else if(strcmp(command, _BF_) == 0){
+		ALLO_ALGO = bestFit;
 	}
 }
 
@@ -167,7 +169,7 @@ int main(int argc, char** argv){
 			print_command_prcss(command);
 			//printf("%lu %lu\n", MEMORY, MEMORY - alloc_mmry);
 		}
-		//printf("**************\n");
+		printf("**************\n");
 		delete_node(command_node, NULL);
 		delete_script(command);
 

@@ -118,5 +118,56 @@ node* firstFit(node** list, prcss* _prcss){
 	return NULL;	
 }
 
+node* bestFit(node** list, prcss* _prcss){
+	if (MEMORY < _prcss->mmry) return NULL;
+	if (_prcss->mmry > (MEMORY - alloc_mmry)) {
+		return NULL;				//not enough memory
+	}
+	
+	if (*list == NULL) {
+		*list = create_node(_prcss);
+		alloc_mmry += _prcss->mmry;
+		return *list;				//first ellement allocation
+	}
+	
+	size_t elmnt = 0;
+	node* (*insert) (node*, void*, void (*updt) (void*, void*)) = NULL; 
+
+	size_t free_pg_sz = getFreeSpace(*list, &elmnt);
+		
+	size_t crrnt_free_pg = MEMORY - alloc_mmry + 1;
+	node* crrnt_wnnr = NULL;
+	
+	if (free_pg_sz >= _prcss->mmry && free_pg_sz < crrnt_free_pg){
+		insert = insert_before;
+		crrnt_wnnr = *list;
+		crrnt_free_pg = free_pg_sz;
+	}
+
+	node* iterator = *list;
+
+	while (iterator != NULL){
+		free_pg_sz = getFreeSpace(iterator, &elmnt);
+
+		if (free_pg_sz >= _prcss->mmry && free_pg_sz < crrnt_free_pg){
+			//printf("FOUND NEW SPACE\n");
+			crrnt_free_pg = free_pg_sz;
+			crrnt_wnnr = iterator;
+			insert = insert_after;
+		}
+		
+		iterator = iterator->next;
+	}
+
+	if (crrnt_wnnr != NULL){
+		alloc_mmry += _prcss->mmry;
+		if (insert == insert_before){
+			*list =  insert(crrnt_wnnr, _prcss, prcss_set_base);
+			return *list;
+		} else return insert(crrnt_wnnr, _prcss, prcss_set_base);
+	}
+
+	return NULL;
+}
 
 #endif
