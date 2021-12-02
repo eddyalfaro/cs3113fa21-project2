@@ -145,9 +145,10 @@ int main(int argc, char** argv){
 		}else if(strcmp(command->cmd, SCRIPTS[2]) == 0){
 			if (MEMORY - alloc_mmry == 0) printf("FULL\n");
 			else listAvailable(mem_sim);
-		}/*else if(strcmp(command->cmd, SCRIPTS[3]) == 0){
-			printList(&mem_sim, print_prcss);
-		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
+		}else if(strcmp(command->cmd, SCRIPTS[3]) == 0){
+			if (mem_sim == NULL) printf("NONE\n");
+			else printList(&mem_sim, print_prcss);
+		}/*else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
 			
 		}*/else {
 			//print_command_prcss(command);
