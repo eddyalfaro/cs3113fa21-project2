@@ -19,7 +19,7 @@ typedef struct prcss{
 void print_prcss(void* item){
 	if (item == NULL) {printf("\n"); return;}
 	prcss temp = *((prcss*) item);
-	printf("(%s, %ld, %ld)\n", temp.name, temp.mmry, temp.base);
+	printf("(%s, %ld, %ld)", temp.name, temp.mmry, temp.base);
 }
 
 void prcss_set_base(void* prev, void* crrnt){

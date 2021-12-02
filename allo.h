@@ -38,7 +38,7 @@ void listAvailable(node* list){
 	size_t elmnt = 0;
 	size_t free_pg_sz = getFreeSpace(list, &elmnt);
 
-	if (free_pg_sz > 0) printf("%lu.(%lu, %d)\n", elmnt, free_pg_sz, 0);
+	if (free_pg_sz > 0) printf("(%lu, %d) ", free_pg_sz, 0);
 
 	node* iterator = list;
 	prcss* data = NULL;
@@ -47,10 +47,14 @@ void listAvailable(node* list){
 		free_pg_sz = getFreeSpace(iterator, &elmnt);
 		
 		if (free_pg_sz > 0) 
-		printf("%lu.(%lu, %lu)\n", elmnt, free_pg_sz, data->mmry + data->base);
+		if (iterator->next != NULL)
+			printf("(%lu, %lu) ", free_pg_sz, data->mmry + data->base);
+		else printf("(%lu, %lu)\n", free_pg_sz, data->mmry + data->base);
 
 		iterator = iterator->next;
 	}
+
+	//printf("\n");
 }
 
 node* release(node* _list, prcss* target){

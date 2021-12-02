@@ -44,7 +44,9 @@ char* buff_flush(){
 
 void getMemSz(){
 	size_t* _temp = malloc(1*sizeof(size_t));
-	scanf("%lu", _temp);
+	if (scanf("%lu", _temp) == 0) {
+		exit(EXIT_FAILURE);
+	}
 	mem_sz = _temp;
 }
 
@@ -97,48 +99,58 @@ int main(int argc, char** argv){
 	node* checker = NULL;	
 
 	script* command = NULL;
-
+	prcss* _prcss = NULL;
 	do{
 		command_node = dequeue(&cmd_queue);
 
 		if (command_node != NULL) command = (script*) command_node->data;
 		else break;		
 		
-		print_command_prcss(command);
+		//print_command_prcss(command);
 		
 		if (strcmp(command->cmd, SCRIPTS[0]) == 0){
 			checker = ALLO_ALGO(&mem_sim, command->object);
 			updt_lastAdded(mem_sim, checker);
+			_prcss = (prcss*) command->object;
 
 			if (checker == NULL) {
-				printf("FAIL REQUEST: "); 
-				print_prcss(command->object);
+				printf("FAIL REQUEST ");
+				printf("%s %lu\n", _prcss->name, _prcss->mmry); 
+				//print_prcss(command->object);
 				delete_prcss((prcss*) command->object);
 			}else {
-				printf("ALLOCATED: ");
-				print_prcss(command->object);
+				printf("ALLOCATED ");
+				printf("%s %lu\n", _prcss->name, _prcss->base);
+				//print_prcss(command->object);
 			}
 		}else if (strcmp(command->cmd, SCRIPTS[1]) == 0){
 			checker = release(mem_sim, command->object);
 
 			if (checker == NULL){
-				printf("FAIL RELEASE: ");
-				print_prcss(command->object);
+				_prcss = (prcss*) command->object;
+				printf("FAIL RELEASE %s\n", _prcss->name);
+				//print_prcss(command->object);
 				delete_prcss((prcss*) command->object);
 			}else {
-				printf("FREE: ");
-				print_prcss(checker->data);
+				printf("FREE ");
+				_prcss = (prcss*) checker->data;
+				printf("%s %lu %lu\n", _prcss->name, _prcss->mmry, _prcss->base);
+				//print_prcss(checker->data);
 				
-				//ir removed the same as the last added it is kept
+				//if removed the same as the last added it is kept
 				//otherwise it is deleted from memory
 				if (comp_prcss(checker->data, last_add->data) != 0)
 					delete_node(checker, delete_prcss);
 			}	
 		}else if(strcmp(command->cmd, SCRIPTS[2]) == 0){
 			listAvailable(mem_sim);
+		}else if(strcmp(command->cmd, SCRIPTS[3]) == 0){
+			printList(&mem_sim, print_prcss);
+		}else if(strcmp(command->cmd, SCRIPTS[4]) == 0){
+		}else {
+			printf("COMMMAND NOT FOUND TRY AGAIN\n");
 		}
-		
-		printf("**************\n");
+		//printf("**************\n");
 		delete_node(command_node, NULL);
 		delete_script(command);
 

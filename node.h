@@ -38,9 +38,10 @@ void printNode(node* pntr, void (*func) (void*)){
 *		printed
 */
 void printList(node** _head, void (*func) (void*)){
-	if (*_head == NULL) return;
+	if (*_head == NULL) {printf("\n"); return;}
 
 	printNode(*_head, func);
+	printf(" ");
 	printList(&((*_head)->next), func);
 }
 
