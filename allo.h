@@ -62,11 +62,11 @@ void listAvailable(node* list){
 	//printf("\n");
 }
 
-node* release(node* _list, prcss* target){
+node* release(node** _list, prcss* target){
 	if (target == NULL) return NULL;
 	if (_list == NULL) return NULL;
 
-	node* rmvd = remove_node(&_list, comp_prcss, target);
+	node* rmvd = remove_node(_list, comp_prcss, target);
 	if (rmvd == NULL) return NULL;
 
 	delete_prcss(target);
