@@ -102,6 +102,7 @@ int main(int argc, char** argv){
 	prcss* _prcss = NULL;
 	do{
 		command_node = dequeue(&cmd_queue);
+		checker = NULL;
 
 		if (command_node != NULL) command = (script*) command_node->data;
 		else break;		

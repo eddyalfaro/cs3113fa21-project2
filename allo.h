@@ -51,11 +51,11 @@ void listAvailable(node* list){
 		data = (prcss*) iterator->data;
 		free_pg_sz = getFreeSpace(iterator, &elmnt);
 		
-		if (free_pg_sz > 0) 
-		if (iterator->next != NULL)
-			printf("(%lu, %lu) ", free_pg_sz, data->mmry + data->base);
-		else printf("(%lu, %lu)\n", free_pg_sz, data->mmry + data->base);
-
+		if (free_pg_sz > 0){ 
+			if (iterator->next != NULL)
+				printf("(%lu, %lu) ", free_pg_sz, data->mmry + data->base);
+			else printf("(%lu, %lu)\n", free_pg_sz, data->mmry + data->base);
+		}
 		iterator = iterator->next;
 	}
 
