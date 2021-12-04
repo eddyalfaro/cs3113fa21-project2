@@ -186,6 +186,7 @@ void delete_node(node* item, void (*delete_data) (void*)){
 /*	frees the memory of the list created from the node structure recurrently
 */
 void delete_list(node* head, void (*delete_data) (void*)){
+	if (head == NULL) return;
 	if (head->next != NULL) delete_list(head->next, delete_data);
 	
 	delete_node(head, delete_data);
