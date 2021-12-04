@@ -237,8 +237,40 @@ node* nextFit(node** list, prcss* _prcss){
 		alloc_mmry += _prcss->mmry;
 		return *list;				//first ellement allocation
 	}
+
 	
+	size_t free_pg_sz;
+	node* iterator = last_add;
+
+	while(iterator != NULL){
+		free_pg_sz = getFreeSpace(iterator, NULL);
+		if (free_pg_sz >= _prcss->mmry){
+			alloc_mmry += _prcss->mmry;
+			return insert_after(iterator, _prcss, prcss_set_base);
+		}
+		iterator = iterator->next;	
+	}
+
+	iterator = *list;
+	size_t elmnt = 0;
 	
+	free_pg_sz = getFreeSpace(iterator, &elmnt);
+	if (free_pg_sz >= _prcss->mmry){
+		alloc_mmry += _prcss->mmry;
+		*list = insert_before(*list, _prcss, NULL);
+		return *list;
+	}
+
+	while(iterator != NULL && comp_prcss(iterator, last_add) != 0){
+		free_pg_sz = getFreeSpace(iterator, &elmnt);
+
+		if (free_pg_sz >= _prcss->mmry){
+			alloc_mmry += _prcss->mmry;
+			return insert_after(iterator, _prcss); 
+		}
+
+		iterator = iterator->next;
+	}
 
 	return NULL;
 }
