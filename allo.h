@@ -266,7 +266,7 @@ node* nextFit(node** list, prcss* _prcss){
 
 		if (free_pg_sz >= _prcss->mmry){
 			alloc_mmry += _prcss->mmry;
-			return insert_after(iterator, _prcss); 
+			return insert_after(iterator, _prcss, prcss_set_base); 
 		}
 
 		iterator = iterator->next;
