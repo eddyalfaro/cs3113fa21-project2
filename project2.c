@@ -64,6 +64,8 @@ void select_algo(char* command){
 		ALLO_ALGO = firstFit;
 	}else if(strcmp(command, _BF_) == 0){
 		ALLO_ALGO = bestFit;
+	}else if(strcmp(command, _WF_) == 0){
+		ALLO_ALGO = worstFit;
 	}
 }
 
