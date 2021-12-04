@@ -11,6 +11,14 @@ bf: clean project2
 	./project2 BESTFIT 268435456  tests/input.txt
 	make clean
 
+wf: clean project2
+	./project2 WORSTFIT 268435456  tests/input.txt
+	make clean
+
+nf: clean project2
+	./project2 NEXTFIT 268435456  tests/input.txt
+	make clean
+
 test:
 	cc test.c -o test -pedantic
 	./test
