@@ -177,6 +177,7 @@ int main(int argc, char** argv){
 
 	}while (cmd_queue != NULL);		
 
+	delete_list(mem_sim, delete_prcss);
 	
 	if (argc == 1){
 		free((char*) mem_allo_algo);
