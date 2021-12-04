@@ -10,9 +10,13 @@ static node* last_add = NULL;
 
 
 size_t getFreeSpace(node* node, size_t* elmnt){
-	*elmnt = *elmnt + 1;
+	if (node == NULL) return 0;
+	
 	prcss* crrnt = (prcss*) node->data;
-	if (*elmnt == 1)return crrnt->base;
+	if (elmnt != NULL){
+		*elmnt = *elmnt + 1;
+		if (*elmnt == 1)return crrnt->base;
+	}
 	 
 	if (node->next == NULL)return (MEMORY - (crrnt->base + crrnt->mmry));
  
@@ -223,6 +227,18 @@ node* worstFit(node** list, prcss* _prcss){
 }
 
 node* nextFit(node** list, prcss* _prcss){
+	if (MEMORY < _prcss->mmry) return NULL;
+	if (_prcss->mmry > (MEMORY - alloc_mmry)) {
+		return NULL;				//not enough memory
+	}
+	
+	if (*list == NULL) {
+		*list = create_node(_prcss);
+		alloc_mmry += _prcss->mmry;
+		return *list;				//first ellement allocation
+	}
+	
+	
 
 	return NULL;
 }
