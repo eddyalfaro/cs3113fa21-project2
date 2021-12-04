@@ -144,7 +144,7 @@ int main(int argc, char** argv){
 				printf("%s %lu %lu\n", _prcss->name, _prcss->mmry, _prcss->base);
 				//print_prcss(checker->data);
 				
-				//if removed the same as the last added it is kept
+				//if the removed node is the same as the last added, it is kept
 				//otherwise it is deleted from memory
 				if (comp_prcss(checker->data, last_add->data) != 0)
 					delete_node(checker, delete_prcss);
@@ -170,8 +170,6 @@ int main(int argc, char** argv){
 			}
 			delete_prcss(_prcss);
 		}else {
-			print_command_prcss(command);
-			//printf("%lu %lu\n", MEMORY, MEMORY - alloc_mmry);
 		}
 		//printf("**************\n");
 		delete_node(command_node, NULL);

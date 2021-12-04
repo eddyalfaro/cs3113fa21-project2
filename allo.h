@@ -21,9 +21,9 @@ size_t getFreeSpace(node* node, size_t* elmnt){
 }
 
 void updt_lastAdded(node* list, node* last){
-	if (last == NULL) return; 					//nothing added
+	if (last == NULL || list == NULL) return; 					//nothing added
 	
-	if (list != NULL && find_by_data(list, comp_prcss, last->data) == NULL)
+	if (last_add != NULL && find_by_data(list, comp_prcss, last_add->data) == NULL)
 		delete_node(last_add, delete_prcss);			//last added recorded
 							//is not within the list of allocated
 	last_add = last;
