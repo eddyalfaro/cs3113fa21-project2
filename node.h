@@ -156,7 +156,7 @@ node* remove_node(node** head, int (*comp) (void*, void*), void* data){
 	node* temp = *head;
 	if (comp(temp->data, data) == 0){
 		*head = temp->next;
-		temp->next = NULL;
+		//temp->next = NULL;
 		return temp;
 	}
 	

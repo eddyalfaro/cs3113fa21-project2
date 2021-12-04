@@ -72,12 +72,13 @@ node* release(node** _list, prcss* target){
 
 	node* rmvd = remove_node(_list, comp_prcss, target);
 	if (rmvd == NULL) return NULL;
-
+	//printf("removed = %lu, next = %lu\n", &(*rmvd), &(*rmvd->next));
 	delete_prcss(target);
 
 	//if removed is different than the last added it is completely
 	//unlinked from the list
 	if (comp_prcss(rmvd->data, last_add->data) != 0){
+	//	printf("Unlinking bookmark\n");
 		rmvd->next = NULL;
 	}
 
@@ -238,10 +239,12 @@ node* nextFit(node** list, prcss* _prcss){
 		return *list;				//first ellement allocation
 	}
 
+//	printf("bookmark = %d \tlist_head = %d\n", &(*last_add), &(**list));
+//	printf("after-Bookmark = %d \tlist_head = %d\n", &(*last_add->next), &(**list));
 	
 	size_t free_pg_sz;
 	node* iterator = last_add;
-
+	
 	while(iterator != NULL){
 		free_pg_sz = getFreeSpace(iterator, NULL);
 		if (free_pg_sz >= _prcss->mmry){
@@ -250,7 +253,8 @@ node* nextFit(node** list, prcss* _prcss){
 		}
 		iterator = iterator->next;	
 	}
-
+	
+	//return firstFit(list, _prcss);
 	iterator = *list;
 	size_t elmnt = 0;
 	
@@ -258,10 +262,13 @@ node* nextFit(node** list, prcss* _prcss){
 	if (free_pg_sz >= _prcss->mmry){
 		alloc_mmry += _prcss->mmry;
 		*list = insert_before(*list, _prcss, NULL);
+
+		//printList(list, print_prcss);
+		//printf("*****\n");
 		return *list;
 	}
 
-	while(iterator != NULL && comp_prcss(iterator, last_add) != 0){
+	while(iterator != NULL && comp_prcss(iterator->data, last_add->data) != 0){
 		free_pg_sz = getFreeSpace(iterator, &elmnt);
 
 		if (free_pg_sz >= _prcss->mmry){

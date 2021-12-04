@@ -16,7 +16,7 @@ wf: clean project2
 	make clean
 
 nf: clean project2
-	./project2 NEXTFIT 268435456  tests/input.txt
+	./project2 NEXTFIT 100 tests/input2.txt
 	make clean
 
 test:
