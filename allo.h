@@ -222,4 +222,9 @@ node* worstFit(node** list, prcss* _prcss){
 	return NULL;
 }
 
+node* nextFit(node** list, prcss* _prcss){
+
+	return NULL;
+}
+
 #endif
