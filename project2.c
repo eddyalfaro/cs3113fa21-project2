@@ -176,7 +176,10 @@ int main(int argc, char** argv){
 		delete_script(command);
 
 	}while (cmd_queue != NULL);		
-
+	
+	if (last_add != NULL && find_by_data(list, comp_prcss, last_add->data) == NULL)
+		delete_node(last_add, delete_prcss);
+	
 	delete_list(mem_sim, delete_prcss);
 	
 	if (argc == 1){
