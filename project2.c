@@ -177,7 +177,7 @@ int main(int argc, char** argv){
 
 	}while (cmd_queue != NULL);		
 	
-	if (last_add != NULL && find_by_data(list, comp_prcss, last_add->data) == NULL)
+	if (last_add != NULL && find_by_data(mem_sim, comp_prcss, last_add->data) == NULL)
 		delete_node(last_add, delete_prcss);
 	
 	delete_list(mem_sim, delete_prcss);
